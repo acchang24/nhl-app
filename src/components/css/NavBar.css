@@ -1,0 +1,83 @@
+.nav {
+  align-items: center;
+  background-color: black;
+  padding: 15px;
+  color: #fff;
+}
+.nav-menu {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+.collapsible-container {
+  display: flex;
+  flex-direction: column;
+}
+.logo-main {
+  height: 45px;
+  width: 40px;
+}
+.logo-menu {
+  height: 30px;
+  width: 30px;
+}
+.nav-list {
+  display: none;
+  margin: 5px 0;
+}
+.nav-item {
+  margin: 10px;
+  padding: 5px;
+}
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: #ccc;
+}
+.login {
+  align-items: center;
+  cursor: pointer;
+  display: none;
+  justify-content: end;
+  margin-top: 15px;
+}
+.login:hover {
+  color: #ccc;
+}
+.login-logo {
+  height: 30px;
+  margin-right: 5px;
+  width: 30px;
+}
+.expanded {
+  display: block;
+}
+.login.expanded {
+  display: flex;
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    display: flex;
+  }
+  .logo-menu {
+    display: none;
+  }
+  .collapsible-container {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .login {
+    display: flex;
+    margin-top: 0;
+  }
+  .nav-list {
+    display: flex;
+  }
+  .nav-item {
+    margin: 0 5px;
+  }
+}
