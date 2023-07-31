@@ -19,7 +19,7 @@ const NavBar = () => {
             navigate("/");
           }}
           className="logo logo-main"
-          src="nhl-logo.png"
+          src="/nhl-logo.png"
           alt="nhl logo"
         />
         <AiOutlineMenu
