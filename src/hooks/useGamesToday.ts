@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { Schedule } from "../interfaces/schedule";
+import { Schedule } from "../interfaces/Schedule";
 
 // Function that fetches data from api using axios
 const fetchGamesToday = () => {
@@ -16,7 +16,7 @@ const useGamesToday = () => {
   // Call the useQuery hook
   return useQuery<Schedule, Error>({
     queryKey: ["games"],
-    queryFn: fetchGamesToday, // Calls fetchGamesToday to get data
+    queryFn: fetchGamesToday, // Use fetchGamesToday to get data
   });
 };
 

@@ -1,6 +1,6 @@
 import useGamesToday from "../hooks/useGamesToday";
 
-const Games = () => {
+const GamesPage = () => {
   // Calls useGamesToday hook to fetch games
   const { data: gamesToday, error } = useGamesToday();
 
@@ -21,4 +21,4 @@ const Games = () => {
   );
 };
 
-export default Games;
+export default GamesPage;

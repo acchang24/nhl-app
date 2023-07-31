@@ -1,3 +1,6 @@
+import { Record } from "./Record";
+import { Team } from "./Team";
+
 // Interface describing the schedule of games of the current day
 export interface Schedule {
   date: string;
@@ -6,7 +9,7 @@ export interface Schedule {
 
 interface Game {
   gameDate: string;
-  gamePk: number
+  gamePk: number;
   season: string;
   venue: { name: string };
   teams: { away: TeamInfo; home: TeamInfo };
@@ -14,7 +17,7 @@ interface Game {
 
 // Interface to describe details about a team on game day
 interface TeamInfo {
-  leagueRecord: { wins: number; losses: number; ot: number };
+  leagueRecord: Record;
   score: number;
-  team: { id: number; name: string };
+  team: Team;
 }
