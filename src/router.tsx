@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import GamesPage from "./pages/GamesPage";
 import StandingsPage from "./pages/StandingsPage";
 import TeamPage from "./pages/TeamPage";
+import TeamsPage from "./pages/TeamsPage";
 
 // Create a router
 const router = createBrowserRouter([
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage></HomePage> },
       { path: "games", element: <GamesPage></GamesPage> },
       { path: "standings", element: <StandingsPage></StandingsPage> },
-      { path: "teams", element: <div>teams</div> },
+      { path: "teams", element: <TeamsPage></TeamsPage> },
       { path: "teams/:id", element: <TeamPage></TeamPage> },
       { path: "players", element: <div>players</div> },
       { path: "login", element: <div>login</div> },
