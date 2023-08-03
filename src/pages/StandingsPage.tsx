@@ -1,34 +1,41 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
 import useStandings from "../hooks/useStandings";
+import DivisionStandings from "../components/DivisionStandings";
 import { DivisionRecord } from "../interfaces/DivisionRecord";
 
-function formatDivisionStandings(standings: DivisionRecord) {
-  console.log(standings);
+// function formatDivisionStandings(standings: DivisionRecord) {
+//   console.log(standings);
+// }
+
+function renderStandings(sort: string, standings: DivisionRecord[]) {
+  switch (sort) {
+    case "Division":
+      return <DivisionStandings standings={standings}></DivisionStandings>;
+    case "Wildcard":
+      return <>Wildcard</>;
+    case "Conference":
+      return <>Conference</>;
+    case "League":
+      return <>League</>;
+  }
 }
 
 const StandingsPage = () => {
   // Fetch team standings
-  const { data: leagueStandings } = useStandings();
+  const { data: standings } = useStandings();
 
-  // Check if leagueStandings not null and format
-  if (leagueStandings) {
-    formatDivisionStandings(leagueStandings![0]);
-  }
+  // State to keep track of how to sort the standings
+  const [sort, setSort] = useState<string>("Division");
 
   return (
     <div>
-      {leagueStandings?.map((division) => (
-        <div key={division.division.id}>
-          <h2>{division.division.name}</h2>
-          <ul className="list">
-            {division?.teamRecords.map((t) => (
-              <li key={t.team.id}>
-                <Link to={`/teams/${t.team.id}`}>{t.team.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      <select name="sort" onChange={(v) => setSort(v.target.value)}>
+        <option value="Division">Division</option>
+        <option value="Wildcard">Wildcard</option>
+        <option value="Conference">Conference</option>
+        <option value="League">League</option>
+      </select>
+      {renderStandings(sort, standings!)}
     </div>
   );
 };
