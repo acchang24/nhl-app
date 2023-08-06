@@ -2,11 +2,58 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-ul {
-  list-style: none;
+a {
+  text-decoration: none;
+  color: #3e9eff;
+}
+a:hover {
+  color: #196dc0;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 20px auto;
+  min-width: 700px;
+}
+
+tr {
+  border: 1px solid #ddd;
+}
+
+td,
+th {
+  padding: 15px;
+}
+
+th {
+  color: #fff;
+  text-align: left;
+}
+
+td {
+  text-align: center;
+}
+
+thead {
+  background-color: #000;
+}
+
+thead tr th:first-child,
+tbody tr td:first-child {
+  max-width: 200px;
+  min-width: 200px;
+}
+
+tbody tr td:first-child {
+  background-color: #f8f8f8;
+}
+
+.standings-table {
+  overflow-x: auto;
 }
 
 .list {
+  list-style: none;
   padding-left: 0;
 }
 
@@ -15,6 +62,7 @@ ul {
 }
 
 .team-logo-small {
-  width: 20px;
   height: 20px;
+  width: 20px;
 }
+

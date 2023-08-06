@@ -1,0 +1,8 @@
+.team-link {
+  align-items: center;
+  display: flex;
+}
+
+.team-link img {
+  padding-right: 10px;
+}

@@ -9,11 +9,12 @@ const fetchStandings = () => {
     .then((results) => results.data.records);
 };
 
-const useStandings = () => {
+// Hook to fetch team standings sorted by division
+const useDivisionStandings = () => {
   return useQuery<DivisionRecord[]>({
     queryKey: ["standings"],
     queryFn: fetchStandings, // Use fetchStandings to get data
   });
 };
 
-export default useStandings;
+export default useDivisionStandings;

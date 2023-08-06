@@ -1,41 +1,33 @@
 import { useState } from "react";
-import useStandings from "../hooks/useStandings";
 import DivisionStandings from "../components/DivisionStandings";
-import { DivisionRecord } from "../interfaces/DivisionRecord";
 
-// function formatDivisionStandings(standings: DivisionRecord) {
-//   console.log(standings);
-// }
-
-function renderStandings(sort: string, standings: DivisionRecord[]) {
+// Renders the standings table based on state's sort
+function renderStandings(sort: number) {
   switch (sort) {
-    case "Division":
-      return <DivisionStandings standings={standings}></DivisionStandings>;
-    case "Wildcard":
+    case 0:
+      return <DivisionStandings></DivisionStandings>;
+    case 1:
       return <>Wildcard</>;
-    case "Conference":
+    case 2:
       return <>Conference</>;
-    case "League":
+    case 3:
       return <>League</>;
   }
 }
 
 const StandingsPage = () => {
-  // Fetch team standings
-  const { data: standings } = useStandings();
-
   // State to keep track of how to sort the standings
-  const [sort, setSort] = useState<string>("Division");
+  const [sort, setSort] = useState<number>(0); // Default to division sorting
 
   return (
     <div>
-      <select name="sort" onChange={(v) => setSort(v.target.value)}>
-        <option value="Division">Division</option>
-        <option value="Wildcard">Wildcard</option>
-        <option value="Conference">Conference</option>
-        <option value="League">League</option>
+      <select onChange={(v) => setSort(parseInt(v.target.value))}>
+        <option value={0}>Division</option>
+        <option value={1}>Wildcard</option>
+        <option value={2}>Conference</option>
+        <option value={3}>League</option>
       </select>
-      {renderStandings(sort, standings!)}
+      {renderStandings(sort)}
     </div>
   );
 };

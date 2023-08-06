@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import useStandings from "../hooks/useStandings";
+import useDivisionStandings from "../hooks/useDivisionStandings";
 
 const TeamsPage = () => {
-  const { data: leagueStandings } = useStandings();
+  const { data: leagueStandings } = useDivisionStandings();
 
   return (
     <div>
