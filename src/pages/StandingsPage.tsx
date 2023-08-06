@@ -1,4 +1,4 @@
-import { useState } from "react";
+import useNhlStore from "../store";
 import DivisionStandings from "../components/DivisionStandings";
 import WildCardStandings from "../components/WildCardStandings";
 
@@ -17,23 +17,26 @@ function renderStandings(sort: number) {
 }
 
 const StandingsPage = () => {
-  const defaultSort = 0;
-
-  // State to keep track of how to sort the standings
-  const [sort, setSort] = useState<number>(defaultSort); // Default to division sorting
+  // Get global state's standings sort order
+  const sortStandings = useNhlStore((state) => state.sortStandings);
+  // Get global state's setSortStandings function
+  const setSortStandings = useNhlStore((state) => state.setSortStandings);
 
   return (
     <div>
       <select
-        defaultValue={defaultSort}
-        onChange={(v) => setSort(parseInt(v.target.value))}
+        defaultValue={sortStandings}
+        onChange={(v) => {
+          // Set the global state's sort standings variable
+          setSortStandings(parseInt(v.target.value));
+        }}
       >
         <option value={0}>Division</option>
         <option value={1}>Wildcard</option>
         <option value={2}>Conference</option>
         <option value={3}>League</option>
       </select>
-      {renderStandings(sort)}
+      {renderStandings(sortStandings)}
     </div>
   );
 };
