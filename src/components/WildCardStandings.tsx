@@ -30,8 +30,10 @@ const WildCardStandings = () => {
 
   return (
     <>
+      <h2 className="standings-header ">Eastern Conference</h2>
       {getConferenceStandings(eastStandings!)}
       {getWildCardStandings(wildCardEast!)}
+      <h2 className="standings-header ">Western Conference</h2>
       {getConferenceStandings(westStandings!)}
       {getWildCardStandings(wildCardWest!)}
     </>

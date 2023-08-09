@@ -75,3 +75,7 @@ tbody tr td:first-child {
 .team-link img {
   padding-right: 10px;
 }
+
+.standings-header {
+  margin-bottom: 0;
+}
