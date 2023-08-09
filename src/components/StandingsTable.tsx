@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { DivisionRecord, TeamRecord } from "../interfaces/DivisionRecord";
+import "./css/StandingsTable.css";
 
 interface Props {
   type: string;
@@ -74,14 +75,12 @@ const StandingsTable = ({ type, standings }: Props) => {
                     {
                       <div className="team-link-container">
                         <Link className="team-link" to={`/teams/${r.team.id}`}>
-                          {/* <div className="team-link"> */}
                           <img
                             className="team-logo-small"
                             src={`/images/${r.team.id}.png`}
                             alt=""
                           />
                           {r.team.name}
-                          {/* </div> */}
                         </Link>
                       </div>
                     }
@@ -96,7 +95,15 @@ const StandingsTable = ({ type, standings }: Props) => {
                   <td>{r.regulationWins}</td>
                   <td>{r.goalsScored}</td>
                   <td>{r.goalsAgainst}</td>
-                  <td>{r.goalsScored - r.goalsAgainst}</td>
+                  <td
+                    className={
+                      r.goalsScored - r.goalsAgainst > 0
+                        ? "diff-positive"
+                        : "diff-negative"
+                    }
+                  >
+                    {r.goalsScored - r.goalsAgainst}
+                  </td>
                 </tr>
               ))}
             </tbody>
