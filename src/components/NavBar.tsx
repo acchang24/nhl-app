@@ -30,7 +30,10 @@ const NavBar = () => {
       <div className="collapsible-container">
         <div
           className={navExpanded ? "login expanded" : "login"}
-          onClick={() => navigate("/login")}
+          onClick={() => {
+            navigate("/login");
+            setNavExpanded(false);
+          }}
         >
           <AiOutlineUser className="login-logo"></AiOutlineUser>
           Login
