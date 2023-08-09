@@ -1,6 +1,5 @@
 import useDivisionStandings from "../hooks/useDivisionStandings";
 import StandingsTable from "./StandingsTable";
-import "./css/DivisionStandings.css";
 
 // Returns a component containing tables that display team standings by division
 const DivisionStandings = () => {
