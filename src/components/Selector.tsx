@@ -3,7 +3,7 @@ import { BsChevronDown } from "react-icons/bs";
 import "./css/Selector.css";
 
 // Interface describing Option for dropdown list
-interface Option {
+export interface Option {
   id: number;
   name: string;
 }
@@ -60,7 +60,11 @@ const Selector = ({ data, defaultOption, onSelect }: Props) => {
         </div>
       </button>
       {itemsShown && (
-        <div className="item-dropdown">
+        <div
+          className={
+            data.length > 10 ? "item-dropdown selector-scroll" : "item-dropdown"
+          }
+        >
           <ul className="item-list">
             {data?.map((item) => {
               return (
