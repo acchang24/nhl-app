@@ -66,8 +66,12 @@ tbody tr td:first-child {
   width: 20px;
 }
 
+.team-link-container {
+  display: flex;
+  justify-content: start;
+}
+
 .team-link {
-  align-items: center;
   display: flex;
 }
 

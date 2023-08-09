@@ -72,16 +72,18 @@ const StandingsTable = ({ type, standings }: Props) => {
                 <tr key={r.team.id}>
                   <td>
                     {
-                      <Link to={`/teams/${r.team.id}`}>
-                        <div className="team-link">
+                      <div className="team-link-container">
+                        <Link className="team-link" to={`/teams/${r.team.id}`}>
+                          {/* <div className="team-link"> */}
                           <img
                             className="team-logo-small"
                             src={`/images/${r.team.id}.png`}
                             alt=""
                           />
                           {r.team.name}
-                        </div>
-                      </Link>
+                          {/* </div> */}
+                        </Link>
+                      </div>
                     }
                   </td>
                   <td>{getRanking(type, r)}</td>
