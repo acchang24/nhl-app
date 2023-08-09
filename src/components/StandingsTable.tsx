@@ -14,6 +14,8 @@ function getKey(type: string, division: DivisionRecord) {
       return division.conference.id;
     case "conference":
       return division.conference.id;
+    case "league":
+      return division.league.id;
   }
 }
 
@@ -25,6 +27,8 @@ function getTitle(type: string, division: DivisionRecord) {
       return "Wild Card";
     case "conference":
       return division.conference.name;
+    case "league":
+      return division.league.name;
   }
 }
 
@@ -36,6 +40,8 @@ function getRanking(type: string, record: TeamRecord) {
       return record.wildCardRank;
     case "conference":
       return record.conferenceRank;
+    case "league":
+      return record.leagueRank;
   }
 }
 

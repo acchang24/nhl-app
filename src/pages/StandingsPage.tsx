@@ -2,6 +2,7 @@ import useNhlStore from "../store";
 import DivisionStandings from "../components/DivisionStandings";
 import WildCardStandings from "../components/WildCardStandings";
 import ConferenceStandings from "../components/ConferenceStandings";
+import LeagueStandings from "../components/LeagueStandings";
 
 // Renders the standings table based on state's sort
 function renderStandings(sort: number) {
@@ -13,7 +14,7 @@ function renderStandings(sort: number) {
     case 2:
       return <ConferenceStandings></ConferenceStandings>;
     case 3:
-      return <>League</>;
+      return <LeagueStandings></LeagueStandings>;
   }
 }
 

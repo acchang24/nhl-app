@@ -2,6 +2,7 @@ import { Record } from "./Record";
 import { Team } from "./Team";
 
 export interface DivisionRecord {
+  league: { id: number; name: string };
   conference: { id: number; name: string };
   division: { id: number; name: string; nameShort: string };
   standingsType: string;
