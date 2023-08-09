@@ -39,22 +39,38 @@ const NavBar = () => {
           className={navExpanded ? "list nav-list expanded" : "list nav-list"}
         >
           <li className="nav-item">
-            <Link className="nav-link" to="/games">
+            <Link
+              className="nav-link"
+              to="/games"
+              onClick={() => setNavExpanded(false)}
+            >
               Games
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/standings">
+            <Link
+              className="nav-link"
+              to="/standings"
+              onClick={() => setNavExpanded(false)}
+            >
               Standings
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/teams">
+            <Link
+              className="nav-link"
+              to="/teams"
+              onClick={() => setNavExpanded(false)}
+            >
               Teams
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/players">
+            <Link
+              className="nav-link"
+              to="/players"
+              onClick={() => setNavExpanded(false)}
+            >
               Players
             </Link>
           </li>
