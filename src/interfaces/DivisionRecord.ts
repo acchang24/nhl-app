@@ -8,7 +8,7 @@ export interface DivisionRecord {
   teamRecords: TeamRecord[];
 }
 
-interface TeamRecord {
+export interface TeamRecord {
   conferenceRank: string;
   divisionRank: string;
   gamesPlayed: number;
