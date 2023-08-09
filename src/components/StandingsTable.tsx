@@ -55,16 +55,16 @@ const StandingsTable = ({ type, standings }: Props) => {
               <tr>
                 <th>{getTitle(type, division)}</th>
                 <th>Rank</th>
-                <th>Games Played</th>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>OT</th>
-                <th>Points</th>
-                <th>Points %</th>
-                <th>Regulation Wins</th>
-                <th>Goals For</th>
-                <th>Goals Against</th>
-                <th>Goal Differential</th>
+                <th title="Games Played">GP</th>
+                <th title="Wins">W</th>
+                <th title="Losses">L</th>
+                <th title="Overtime/Shootout Losses">OT</th>
+                <th title="Points">PTS</th>
+                <th title="Points Percentage">P%</th>
+                <th title="Regulation Wins">RW</th>
+                <th title="Goals For">GF</th>
+                <th title="Goals Against">GA</th>
+                <th title="Goal Differential">DIFF</th>
               </tr>
             </thead>
             <tbody>

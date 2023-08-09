@@ -13,7 +13,7 @@ a:hover {
 table {
   border-collapse: collapse;
   margin: 20px auto;
-  min-width: 700px;
+  width: 100%;
 }
 
 tr {
@@ -23,15 +23,11 @@ tr {
 td,
 th {
   padding: 15px;
+  text-align: center;
 }
 
 th {
   color: #fff;
-  text-align: left;
-}
-
-td {
-  text-align: center;
 }
 
 thead {
@@ -42,6 +38,7 @@ thead tr th:first-child,
 tbody tr td:first-child {
   max-width: 200px;
   min-width: 200px;
+  text-align: start;
 }
 
 tbody tr td:first-child {

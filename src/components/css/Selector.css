@@ -1,0 +1,56 @@
+.selector-container {
+  display: inline-block;
+  margin-top: 20px;
+}
+.selector-btn {
+  background-color: #cacaca;
+  border-radius: 10px;
+  border: 0;
+  color: #000;
+  cursor: pointer;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+.selector-btn:hover,
+.selector-btn:focus {
+  background-color: #666;
+  color: #ccc;
+}
+.item-selector {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-left: 5px;
+}
+.chevron-icon {
+  padding: 0 5px;
+}
+.item-dropdown {
+  background-color: #cacaca;
+  border-radius: 10px;
+  margin-top: 5px;
+  position: absolute;
+  width: 250px;
+  z-index: 1;
+}
+.item-list {
+  list-style: none;
+  margin: 10px 0;
+  padding-left: 0;
+}
+.item-btn {
+  background-color: #cacaca;
+  border: 0;
+  color: #000;
+  cursor: pointer;
+  margin: 0;
+  outline: 0;
+  padding: 10px;
+  text-align: start;
+  transition: background-color 0.15s;
+  width: 100%;
+}
+.item-btn:hover {
+  background-color: #666;
+  color: #ccc;
+}
