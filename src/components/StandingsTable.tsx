@@ -97,7 +97,7 @@ const StandingsTable = ({ type, standings }: Props) => {
                   <td>{r.goalsAgainst}</td>
                   <td
                     className={
-                      r.goalsScored - r.goalsAgainst > 0
+                      r.goalsScored - r.goalsAgainst >= 0
                         ? "diff-positive"
                         : "diff-negative"
                     }

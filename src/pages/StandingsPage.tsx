@@ -1,4 +1,4 @@
-import useNhlStore from "../store";
+import useStandingsStore from "../store";
 import DivisionStandings from "../components/DivisionStandings";
 import WildCardStandings from "../components/WildCardStandings";
 import ConferenceStandings from "../components/ConferenceStandings";
@@ -8,10 +8,10 @@ import { Option } from "../components/Selector";
 import "./css/StandingsPage.css";
 
 // Renders the standings table based on state's sort
-function renderStandings(sort: number) {
+function renderStandings(sort: number, year: string) {
   switch (sort) {
     case 0:
-      return <DivisionStandings></DivisionStandings>;
+      return <DivisionStandings year={year ? year : ""}></DivisionStandings>;
     case 1:
       return <WildCardStandings></WildCardStandings>;
     case 2:
@@ -26,13 +26,20 @@ function getSeasonOptions(): Option[] {
   // Get the current year
   let currentYear = new Date().getFullYear();
 
+  // If start of new season add 1 to year
+  let currentMonth = new Date().getMonth();
+  // Increment the year by October (start of new season)
+  if (currentMonth > 9) {
+    currentYear++;
+  }
+
   // New array of options
   const options: Option[] = [];
 
   let index = 0;
 
-  // Loop through starting from NHL's 1917-1918 season
-  for (let i = 1917; i < currentYear; ++i) {
+  // Loop through starting from NHL's 1999-2000 season
+  for (let i = 1999; i < currentYear; ++i) {
     let secondYear = i + 1;
     let newOption: Option = {
       id: index,
@@ -45,6 +52,7 @@ function getSeasonOptions(): Option[] {
   return options;
 }
 
+// Function to remove the dash between years
 function delimitYear(year: string): string {
   const index = year.indexOf("-");
   let newYear = year.slice(0, index) + year.slice(index + 1);
@@ -53,9 +61,13 @@ function delimitYear(year: string): string {
 
 const StandingsPage = () => {
   // Get global state's standings sort order
-  const sortStandingsOrder = useNhlStore((state) => state.sortStandings);
+  const sortStandingsOrder = useStandingsStore((state) => state.sortStandings);
   // Get global state's setSortStandings function
-  const setSortStandings = useNhlStore((state) => state.setSortStandings);
+  const setSortStandings = useStandingsStore((state) => state.setSortStandings);
+  // Get global state's year standings
+  const yearStandings = useStandingsStore((state) => state.sortYear);
+  // Get global state's setYearStandings function
+  const setYearStandings = useStandingsStore((state) => state.setYearStandings);
 
   const sortOptions: Option[] = [
     { id: 0, name: "Division" },
@@ -75,12 +87,19 @@ const StandingsPage = () => {
       ></Selector>
       <Selector
         data={seasonOptions}
-        defaultOption={seasonOptions[0].name} // Pass in global state's sortStandings as default option
+        defaultOption={
+          yearStandings === "" ? seasonOptions[0].name : yearStandings
+        } // Pass in global state's sortStandings as default option
         onSelect={(item) => {
-          console.log(delimitYear(item.name));
+          setYearStandings(item.name);
         }}
       ></Selector>
-      {renderStandings(sortStandingsOrder)}
+      {renderStandings(
+        sortStandingsOrder,
+        yearStandings === ""
+          ? delimitYear(seasonOptions[0].name)
+          : delimitYear(yearStandings)
+      )}
     </div>
   );
 };
