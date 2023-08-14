@@ -1,19 +1,26 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { DivisionRecord } from "../interfaces/DivisionRecord";
+import useStandingsStore from "../store";
 
 // Function to fetch the standings with axios
-function fetchWildCardStandings() {
+function fetchWildCardStandings(year: string) {
   return axios
-    .get("https://statsapi.web.nhl.com/api/v1/standings/wildCardWithLeaders")
+    .get(
+      `https://statsapi.web.nhl.com/api/v1/standings/wildCardWithLeaders?season=${year}`
+    )
     .then((results) => results.data.records);
 }
 
 // Hook to fetch team standings sorted by wild card
-const useWildCardStandings = () => {
+const useWildCardStandings = (year: string) => {
+  // Get state's year and standings sort
+  const sortYear = useStandingsStore((state) => state.sortYear);
+  const sortStandings = useStandingsStore((state) => state.sortStandings);
+
   return useQuery<DivisionRecord[]>({
-    queryKey: ["wildCardStandings"],
-    queryFn: fetchWildCardStandings, // use fetchWildCardStandings to get data
+    queryKey: ["wildCardStandings", sortYear, sortStandings], // Fetch new data everytime sort year/standings is changed
+    queryFn: () => fetchWildCardStandings(year), // use fetchWildCardStandings to get data
   });
 };
 

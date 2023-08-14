@@ -13,11 +13,13 @@ function renderStandings(sort: number, year: string) {
     case 0:
       return <DivisionStandings year={year ? year : ""}></DivisionStandings>;
     case 1:
-      return <WildCardStandings></WildCardStandings>;
+      return <WildCardStandings year={year ? year : ""}></WildCardStandings>;
     case 2:
-      return <ConferenceStandings></ConferenceStandings>;
+      return (
+        <ConferenceStandings year={year ? year : ""}></ConferenceStandings>
+      );
     case 3:
-      return <LeagueStandings></LeagueStandings>;
+      return <LeagueStandings year={year ? year : ""}></LeagueStandings>;
   }
 }
 
@@ -39,7 +41,7 @@ function getSeasonOptions(): Option[] {
   let index = 0;
 
   // Loop through starting from NHL's 1999-2000 season
-  for (let i = 1999; i < currentYear; ++i) {
+  for (let i = 1990; i < currentYear; ++i) {
     let secondYear = i + 1;
     let newOption: Option = {
       id: index,

@@ -12,12 +12,13 @@ const fetchDivisionStandings = (year: string) => {
 
 // Hook to fetch team standings sorted by division
 const useDivisionStandings = (year: string) => {
-  // Get state's year sort
+  // Get state's year and standings sort
   const sortYear = useStandingsStore((state) => state.sortYear);
+  const sortStandings = useStandingsStore((state) => state.sortStandings);
 
   return useQuery<DivisionRecord[]>({
-    queryKey: ["divisionStandings", sortYear], // Fetch new data everytime sort year is changed
-    queryFn: () => fetchDivisionStandings(year), // Use fetchStandings to get data
+    queryKey: ["divisionStandings", sortYear, sortStandings], // Fetch new data everytime sort year/standings is changed
+    queryFn: () => fetchDivisionStandings(year), // Use fetchDivisionStandings to get data
   });
 };
 

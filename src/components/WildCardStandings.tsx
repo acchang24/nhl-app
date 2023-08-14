@@ -2,22 +2,12 @@ import useWildCardStandings from "../hooks/useWildCardStandings";
 import { DivisionRecord } from "../interfaces/DivisionRecord";
 import StandingsTable from "./StandingsTable";
 
-function getConferenceStandings(standings: DivisionRecord[]) {
-  return (
-    <StandingsTable type="division" standings={standings}></StandingsTable>
-  );
+// Selected year as props
+interface Props {
+  year: string;
 }
 
-function getWildCardStandings(standings: DivisionRecord[]) {
-  return (
-    <StandingsTable type="wildCard" standings={standings}></StandingsTable>
-  );
-}
-
-const WildCardStandings = () => {
-  // Fetch data sorted by wild card
-  const { data } = useWildCardStandings();
-
+function displayWildCardWithLeaders(data: DivisionRecord[]) {
   // Separate eastern conference standings
   const eastStandings = data?.slice(2, 4);
   // Separate western conference standings
@@ -31,13 +21,49 @@ const WildCardStandings = () => {
   return (
     <>
       <h2 className="standings-header ">Eastern Conference</h2>
-      {getConferenceStandings(eastStandings!)}
-      {getWildCardStandings(wildCardEast!)}
+      <StandingsTable
+        type="division"
+        standings={eastStandings!}
+      ></StandingsTable>
+      <StandingsTable
+        type="wildCard"
+        standings={wildCardEast!}
+      ></StandingsTable>
       <h2 className="standings-header ">Western Conference</h2>
-      {getConferenceStandings(westStandings!)}
-      {getWildCardStandings(wildCardWest!)}
+      <StandingsTable
+        type="division"
+        standings={westStandings!}
+      ></StandingsTable>
+      <StandingsTable
+        type="wildCard"
+        standings={wildCardWest!}
+      ></StandingsTable>
     </>
   );
+}
+
+function displayNoLeaders(data: DivisionRecord[]) {
+  return (
+    <>
+      <StandingsTable type="division" standings={data}></StandingsTable>
+    </>
+  );
+}
+
+const WildCardStandings = ({ year }: Props) => {
+  // Fetch data sorted by wild card
+  const { data } = useWildCardStandings(year);
+
+  if (data && data.length > 0) {
+    return (
+      <>
+        {data[0].standingsType === "divisionLeaders"
+          ? displayNoLeaders(data)
+          : displayWildCardWithLeaders(data)}
+      </>
+    );
+  }
+  return <></>;
 };
 
 export default WildCardStandings;

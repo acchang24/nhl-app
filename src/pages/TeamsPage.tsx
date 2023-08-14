@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import useDivisionStandings from "../hooks/useDivisionStandings";
 
 const TeamsPage = () => {
-  const { data: leagueStandings } = useDivisionStandings();
+  const { data: leagueStandings } = useDivisionStandings("");
 
   return (
     <div>

@@ -55,14 +55,13 @@ const StandingsTable = ({ type, standings }: Props) => {
             <thead>
               <tr>
                 <th>{getTitle(type, division)}</th>
-                <th>Rank</th>
+                <th title="Rank">Rank</th>
                 <th title="Games Played">GP</th>
                 <th title="Wins">W</th>
                 <th title="Losses">L</th>
                 <th title="Overtime/Shootout Losses">OT</th>
                 <th title="Points">PTS</th>
                 <th title="Points Percentage">P%</th>
-                <th title="Regulation Wins">RW</th>
                 <th title="Goals For">GF</th>
                 <th title="Goals Against">GA</th>
                 <th title="Goal Differential">DIFF</th>
@@ -92,7 +91,6 @@ const StandingsTable = ({ type, standings }: Props) => {
                   <td>{r.leagueRecord.ot}</td>
                   <td>{r.points}</td>
                   <td>{r.pointsPercentage.toFixed(3)}</td>
-                  <td>{r.regulationWins}</td>
                   <td>{r.goalsScored}</td>
                   <td>{r.goalsAgainst}</td>
                   <td
@@ -102,7 +100,9 @@ const StandingsTable = ({ type, standings }: Props) => {
                         : "diff-negative"
                     }
                   >
-                    {r.goalsScored - r.goalsAgainst}
+                    {r.goalsScored - r.goalsAgainst >= 0
+                      ? `+${r.goalsScored - r.goalsAgainst}`
+                      : r.goalsScored - r.goalsAgainst}
                   </td>
                 </tr>
               ))}
