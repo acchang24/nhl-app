@@ -1,0 +1,12 @@
+.game-card {
+  border: 1px solid #ccc;
+  margin: 20px;
+}
+.game-card-header {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+}
+.game-card-footer {
+    padding: 20px;
+}

@@ -1,24 +1,25 @@
+import GameCard from "../components/GameCard";
 import useGamesToday from "../hooks/useGamesToday";
+import { Game } from "../interfaces/Schedule";
 
 const GamesPage = () => {
   // Calls useGamesToday hook to fetch games
-  const { data: gamesToday, error } = useGamesToday();
+  const { data, error } = useGamesToday();
 
-  return (
-    <>
-      {error && error.message}
-      <ul className="list">
-        {gamesToday?.games.map((g) => (
-          <li key={g.gamePk}>
-            <div>
-              {g.venue.name}
-              {g.teams.away.team.name + " at " + g.teams.home.team.name}
-            </div>
-          </li>
+  if (data) {
+    const gamesToday: Game[] = data[0].games;
+    // console.log(gamesToday);
+    return (
+      <>
+        {error && error.message}
+        {gamesToday?.map((g: Game) => (
+          <GameCard key={g.gamePk} game={g}></GameCard>
         ))}
-      </ul>
-    </>
-  );
+      </>
+    );
+  }
+
+  return <></>;
 };
 
 export default GamesPage;

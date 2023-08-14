@@ -7,7 +7,7 @@ export interface Schedule {
   games: Game[];
 }
 
-interface Game {
+export interface Game {
   gameDate: string;
   gamePk: number;
   season: string;
