@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Game } from "../interfaces/Schedule";
 import "./css/GameCard.css";
 
@@ -14,21 +15,25 @@ const GameCard = ({ game }: Props) => {
       <div className="game-card-body">
         <div className="game-card-teams-row">
           <div className="game-card-team grid-item">
-            <img
-              className="team-logo-medium game-card-logo"
-              src={`/images/${game.teams.away.team.id}.png`}
-              alt="team-logo"
-            />
-            <div>{game.teams.away.team.name}</div>
+            <Link to={`/teams/${game.teams.away.team.id}`}>
+              <img
+                className="team-logo-medium game-card-logo"
+                src={`/images/${game.teams.away.team.id}.png`}
+                alt="team-logo"
+              />
+              <div>{game.teams.away.team.name}</div>
+            </Link>
           </div>
           <div className="game-at grid-item">@</div>
           <div className="game-card-team grid-item">
-            <img
-              className="team-logo-medium game-card-logo"
-              src={`/images/${game.teams.home.team.id}.png`}
-              alt="team-logo"
-            />
-            <div>{game.teams.home.team.name}</div>
+            <Link to={`/teams/${game.teams.home.team.id}`}>
+              <img
+                className="team-logo-medium game-card-logo"
+                src={`/images/${game.teams.home.team.id}.png`}
+                alt="team-logo"
+              />
+              <div>{game.teams.home.team.name}</div>
+            </Link>
           </div>
         </div>
       </div>
