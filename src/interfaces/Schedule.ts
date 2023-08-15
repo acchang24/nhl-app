@@ -10,6 +10,7 @@ export interface Schedule {
 export interface Game {
   gameDate: string;
   gamePk: number;
+  link: string;
   season: string;
   venue: { name: string };
   teams: { away: TeamInfo; home: TeamInfo };

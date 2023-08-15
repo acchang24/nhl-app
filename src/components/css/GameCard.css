@@ -1,12 +1,39 @@
 .game-card {
-  border: 1px solid #ccc;
-  margin: 20px;
+  box-shadow: 5px 5px 10px 2px #ccc;
+  margin: 20px 0;
+  transition: transform 0.15s;
+}
+.game-card:hover {
+  transform: scale(1.015);
 }
 .game-card-header {
   background-color: #000;
   color: #fff;
   padding: 20px;
 }
+.game-card-body {
+  padding: 10px;
+  text-align: center;
+}
 .game-card-footer {
-    padding: 20px;
+  padding: 10px;
+  text-align: center;
+}
+.game-card-teams-row {
+  display: grid;
+  grid-template-columns: 1fr 0.25fr 1fr;
+}
+.game-card-team {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.game-at {
+  margin: auto;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+.game-card-logo {
+  margin-bottom: 20px;
 }

@@ -10,12 +10,13 @@ const GamesPage = () => {
     const gamesToday: Game[] = data[0].games;
     // console.log(gamesToday);
     return (
-      <>
+      <div className="container">
+        <h1>Games Today</h1>
         {error && error.message}
         {gamesToday?.map((g: Game) => (
           <GameCard key={g.gamePk} game={g}></GameCard>
         ))}
-      </>
+      </div>
     );
   }
 

@@ -5,7 +5,6 @@ import ConferenceStandings from "../components/ConferenceStandings";
 import LeagueStandings from "../components/LeagueStandings";
 import Selector from "../components/Selector";
 import { Option } from "../components/Selector";
-import "./css/StandingsPage.css";
 
 // Renders the standings table based on state's sort
 function renderStandings(sort: number, year: string) {
@@ -81,7 +80,7 @@ const StandingsPage = () => {
   const seasonOptions: Option[] = getSeasonOptions();
 
   return (
-    <div className="standings-container">
+    <div className="container">
       <Selector
         data={sortOptions}
         defaultOption={sortOptions[sortStandingsOrder].name} // Pass in global state's sortStandings as default option
