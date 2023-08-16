@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import useDivisionStandings from "../hooks/useDivisionStandings";
+import TeamCard from "../components/TeamCard";
+import "./css/TeamsPage.css";
 
 const TeamsPage = () => {
   const { data: leagueStandings } = useDivisionStandings("");
@@ -7,22 +8,11 @@ const TeamsPage = () => {
   return (
     <div>
       {leagueStandings?.map((division) => (
-        <div key={division.division.id}>
+        <div className="team-page" key={division.division.id}>
           <h2>{division.division.name}</h2>
-          <ul className="list">
-            {division?.teamRecords.map((t) => (
-              <li key={t.team.id}>
-                <Link to={`/teams/${t.team.id}`}>
-                  <img
-                    className="team-logo-small"
-                    src={`/images/${t.team.id}.png`}
-                    alt="logo"
-                  />
-                  {t.team.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {division?.teamRecords.map((t) => (
+            <TeamCard record={t} key={t.team.id}></TeamCard>
+          ))}
         </div>
       ))}
     </div>

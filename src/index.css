@@ -58,9 +58,20 @@ tbody tr td:first-child {
   cursor: pointer;
 }
 
+.btn {
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: #ddd;
+}
+.btn:hover {
+  background-color: #ccc;
+}
+
 .container {
   margin: auto;
-  width: 90%;
+  width: 80%;
 }
 
 .team-logo-medium {

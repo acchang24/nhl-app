@@ -6,7 +6,6 @@ import { Schedule } from "../interfaces/Schedule";
 const fetchGamesToday = () => {
   return axios
     .get(
-      // "https://statsapi.web.nhl.com/api/v1/schedule?&startDate=2018-01-02&endDate=2018-01-02"
       "https://statsapi.web.nhl.com/api/v1/schedule?&startDate=2018-01-02&endDate=2018-01-02"
     )
     .then((response) => response.data.dates); // Get more specific data from api
