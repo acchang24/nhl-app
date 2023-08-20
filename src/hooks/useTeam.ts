@@ -2,9 +2,9 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchTeam = (id: string) => {
-  axios
+  return axios
     .get(`https://statsapi.web.nhl.com/api/v1/teams/${id}`)
-    .then((response) => response.data);
+    .then((response) => response.data.teams[0]);
 };
 
 const useTeam = (id: string) => {

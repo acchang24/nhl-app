@@ -11,8 +11,7 @@
   align-items: center;
   text-align: center;
   margin: 20px auto;
-  box-shadow: 1px 1px 20px 1px #ccc;
-  border-radius: 10px;
+  box-shadow: 1px 1px 8px 1px #ccc;
   padding: 20px;
 }
 .col-left {
